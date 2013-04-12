@@ -1,0 +1,33 @@
+
+QLabel {
+	font: bold 12pt;
+	color: rgb(84,84,84);
+}
+
+QLineEdit {
+	color: rgb(84,84,84);
+	background-color: rgb(255, 255, 241);
+	selection-color: white;
+	selection-background-color: rgb(191, 31, 127);
+	border: 2px groove gray;
+	border-radius: 10px;
+	padding: 2px 4px;
+}
+
+QPushButton {
+	color: rgb(84,84,84);
+	font: bold 12pt;
+	border-width: 16px;
+	padding: -16px 0px;
+	min-height: 32px;
+	min-width: 60px;
+}
+
+
+
+
+QDialog {
+	background-image: url(:/images/12.png);
+}
+
+

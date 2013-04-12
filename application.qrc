@@ -1,0 +1,21 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+     <file>images/logo.png</file>
+     <file>images/007.png</file>
+     <file>images/background.jpeg</file>
+     <file>images/copy.png</file>
+     <file>images/green.jpeg</file>
+     <file>images/images.jpeg</file>
+     <file>images/wood.png</file>
+     <file>images/009.png</file>
+     <file>images/10.png</file>
+     <file>images/11.png</file>
+     <file>images/12.png</file>
+     <file>images/17.png</file>
+     <file>movies_logo.png</file>
+     <file>logo2.png</file>
+     <file>logo.png</file>
+     <file>back_home.png</file>
+
+ </qresource>
+ </RCC>
