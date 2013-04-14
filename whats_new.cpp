@@ -84,7 +84,7 @@ void WhatsNew::display_search_7() {
 }
  
 void WhatsNew::display_whatsnew() {
-	cout << "Get Images" << endl;
+	cout << "Get Images2" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
 	string inputCommand = "display*_*" + username_main +"*_*new";
@@ -148,7 +148,7 @@ void WhatsNew::display_whatsnew() {
     
     const char * g_button_7_str = entry[6][1].c_str();
 	g_button_7 = new QPushButton();
-	g_button_7->setIcon(QIcon(entry[6][1].c_str()));
+	g_button_7->setIcon(QIcon(entry[6][2].c_str()));
 	g_button_7->setIconSize(QSize(120,200));
 	g_button_7->setToolTip(tr(g_button_7_str));
     
@@ -245,7 +245,7 @@ void WhatsNew::createBottom_7() {
 	
 	//copyright
 	copy_right_7 = new QLabel();
-	copy_right_7->setText("Copy right ...........:");
+	copy_right_7->setText(Connector::copyright);
     
 	sign_out_7 = new QPushButton(tr("<Sign Out>"));
 	manage_account_7 = new QPushButton(tr("<Manage Account>"));

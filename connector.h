@@ -5,6 +5,7 @@
 
 #include <string>
 #include <iostream>
+#include <cctype>
 
 using namespace std;
 
@@ -135,6 +136,11 @@ public:
     
     //result
     static string result_entry[10];
+
+    //entry->favorite?
+    static string favorite;
+
+    static QString copyright;
     
 };
 #endif

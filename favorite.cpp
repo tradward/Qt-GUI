@@ -6,11 +6,11 @@
     createMenu_6();
 	create_logo_6();
 	display_search_6();
-	display_favorite();
+
     create_line_6();
 	createBottom_6();
 
-    QVBoxLayout *mainLayout_6 = new QVBoxLayout;
+    mainLayout_6 = new QVBoxLayout;
     mainLayout_6->setMenuBar(menuBar_6);
 
     mainLayout_6->addWidget(favorite_logo);
@@ -18,7 +18,8 @@
 	mainLayout_6->addWidget(search_area_6);
 	mainLayout_6->addWidget(line_logo_6_2);
 	mainLayout_6->addWidget(message_favorite);
-	mainLayout_6->addWidget(vertical_images_6);
+    display_favorite();
+
 	mainLayout_6->addWidget(line_logo_6_3);
 	mainLayout_6->addWidget(bottom_area_6);
 
@@ -94,7 +95,7 @@ void Favorite::display_search_6(){
 
 void Favorite::display_favorite(){
 	string username_favorite = string((const char *)Connector::username.toLocal8Bit());  
- 	string inputCommand = "display*_*" + username_favorite + "*_*favorites";
+ 	string inputCommand = "display*_*" + username_favorite + "*_*favourites";
     int clientfd_str= client::Clie_SockEstablish();
  	string url = Connector::ip.toStdString();
 	client::Clie_ClientConnect(clientfd_str, (char *)url.c_str());
@@ -124,7 +125,7 @@ void Favorite::display_favorite(){
         client::Clie_close(clientfdx);
     }
     client::Clie_close(clientfd_str); 
-    assert(entry.size() == num);
+    assert((int)entry.size() == num);
 
 
     vertical_images_6 = new QGroupBox();
@@ -264,7 +265,7 @@ void Favorite::display_favorite(){
     	QObject::connect(favorite_buttons[9], SIGNAL(clicked()),this, SLOT(handleButton_6_pic_10()));
     }
 
-
+        mainLayout_6->addWidget(vertical_images_6);
 }
 
 
@@ -279,7 +280,7 @@ void Favorite::display_favorite(){
 	
 	//copyright
 	copy_right_6 = new QLabel();
-	copy_right_6->setText("Copy right ...........:");
+	copy_right_6->setText(Connector::copyright);
 
 	sign_out_6 = new QPushButton(tr("<Sign Out>"));
 	manage_account_6 = new QPushButton(tr("<Manage Account>"));

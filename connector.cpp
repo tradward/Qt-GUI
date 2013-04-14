@@ -68,7 +68,7 @@ QString Connector::password = "";
 string Connector::entry_id = "";
 
 //IP
-QString Connector::ip = "10.190.52.56";
+QString Connector::ip = "192.168.1.107";
 
 //search
 QString Connector::search_metric = "";
@@ -79,26 +79,26 @@ string Connector::new_entry[12] = {"","","","","","","","","","","",""};
 
 //
 string Connector::movies_entry[6] = {"","","","","",""};
-    
+
 string Connector::movies_action_entry[6] = {"","","","","",""};
 string Connector::movies_animation_entry[6] = {"","","","","",""};
 string Connector::movies_comedy_entry[6] = {"","","","","",""};
 string Connector::movies_documentary_entry[6] = {"","","","","",""};
 string Connector::movies_drama_entry[6] = {"","","","","",""};
-    
+
 string Connector::movies_family_entry[6] = {"","","","","",""};
 string Connector::movies_foreign_entry[6] = {"","","","","",""};
 string Connector::movies_horror_entry[6] = {"","","","","",""};
 string Connector::movies_music_art_entry[6] = {"","","","","",""};
 string Connector::movies_mystery_suspense_entry[6] = {"","","","","",""};
-    
+
 string Connector::movies_romance_entry[6] = {"","","","","",""};
 string Connector::movies_science_fiction_entry[6] = {"","","","","",""};
 string Connector::movies_sports_entry[6] = {"","","","","",""};
 string Connector::movies_war_entry[6] = {"","","","","",""};
 string Connector::movies_western_entry[6] = {"","","","","",""};
 
-//    
+//
 string Connector::series_entry[6] = {"","","","","",""};
 
 string Connector::series_action_entry[6] = {"","","","","",""};
@@ -107,7 +107,7 @@ string Connector::series_classics_entry[6] = {"","","","","",""};
 string Connector::series_comic_entry[6] = {"","","","","",""};
 string Connector::series_comedy_entry[6] = {"","","","","",""};
 string Connector::series_discovery_entry[6] = {"","","","","",""};
-    
+
 string Connector::series_documentary_entry[6] = {"","","","","",""};
 string Connector::series_history_entry[6] = {"","","","","",""};
 string Connector::series_kids_entry[6] = {"","","","","",""};
@@ -120,3 +120,10 @@ string Connector::favorites_entry[10] = {"","","","","","","","","",""};
 string Connector::result_entry[10] = {"","","","","","","","","",""};
 
 string Connector::series_type = "";
+
+
+//entry->favorite?
+string Connector::favorite = "0";
+QString cp = "Copyright ";
+QString cps = "\u00A9";
+QString Connector::copyright = cp + cps + " 2013 GROUP02. All rights reserved";

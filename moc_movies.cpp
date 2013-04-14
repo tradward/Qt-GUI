@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'movies.h'
 **
-** Created: Fri Apr 12 16:01:38 2013
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
+** Created: Sat Apr 13 20:59:14 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'movies.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.4. It"
+#error "This file was generated using the moc from 4.8.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -31,37 +31,37 @@ static const uint qt_meta_data_Movies[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       7,   26,   26,   26, 0x08,
-      27,   26,   26,   26, 0x08,
-      46,   26,   26,   26, 0x08,
-      65,   26,   26,   26, 0x08,
-      84,   26,   26,   26, 0x08,
-     104,   26,   26,   26, 0x08,
-     124,   26,   26,   26, 0x08,
-     144,   26,   26,   26, 0x08,
-     164,   26,   26,   26, 0x08,
-     184,   26,   26,   26, 0x08,
-     204,   26,   26,   26, 0x08,
-     229,   26,   26,   26, 0x08,
-     257,   26,   26,   26, 0x08,
-     282,   26,   26,   26, 0x08,
-     312,   26,   26,   26, 0x08,
-     336,   26,   26,   26, 0x08,
-     366,   26,   26,   26, 0x08,
-     392,   26,   26,   26, 0x08,
-     417,   26,   26,   26, 0x08,
-     445,   26,   26,   26, 0x08,
-     480,   26,   26,   26, 0x08,
-     506,   26,   26,   26, 0x08,
-     540,   26,   26,   26, 0x08,
-     565,   26,   26,   26, 0x08,
-     587,   26,   26,   26, 0x08,
+       8,    7,    7,    7, 0x08,
+      27,    7,    7,    7, 0x08,
+      46,    7,    7,    7, 0x08,
+      65,    7,    7,    7, 0x08,
+      84,    7,    7,    7, 0x08,
+     104,    7,    7,    7, 0x08,
+     124,    7,    7,    7, 0x08,
+     144,    7,    7,    7, 0x08,
+     164,    7,    7,    7, 0x08,
+     184,    7,    7,    7, 0x08,
+     204,    7,    7,    7, 0x08,
+     229,    7,    7,    7, 0x08,
+     257,    7,    7,    7, 0x08,
+     282,    7,    7,    7, 0x08,
+     312,    7,    7,    7, 0x08,
+     336,    7,    7,    7, 0x08,
+     366,    7,    7,    7, 0x08,
+     392,    7,    7,    7, 0x08,
+     417,    7,    7,    7, 0x08,
+     445,    7,    7,    7, 0x08,
+     480,    7,    7,    7, 0x08,
+     506,    7,    7,    7, 0x08,
+     540,    7,    7,    7, 0x08,
+     565,    7,    7,    7, 0x08,
+     587,    7,    7,    7, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Movies[] = {
-    "Movies\0handleButton_3_1()\0\0"
+    "Movies\0\0handleButton_3_1()\0"
     "handleButton_3_2()\0handleButton_3_3()\0"
     "handleButton_3_4()\0handle_a_button_3()\0"
     "handle_b_button_3()\0handle_c_button_3()\0"

@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'favorite.h'
 **
-** Created: Fri Apr 12 16:01:34 2013
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
+** Created: Sun Apr 14 11:21:47 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'favorite.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.4. It"
+#error "This file was generated using the moc from 4.8.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -31,26 +31,26 @@ static const uint qt_meta_data_Favorite[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       9,   28,   28,   28, 0x08,
-      29,   28,   28,   28, 0x08,
-      48,   28,   28,   28, 0x08,
-      67,   28,   28,   28, 0x08,
-      86,   28,   28,   28, 0x08,
-     109,   28,   28,   28, 0x08,
-     132,   28,   28,   28, 0x08,
-     155,   28,   28,   28, 0x08,
-     178,   28,   28,   28, 0x08,
-     201,   28,   28,   28, 0x08,
-     224,   28,   28,   28, 0x08,
-     247,   28,   28,   28, 0x08,
-     270,   28,   28,   28, 0x08,
-     293,   28,   28,   28, 0x08,
+      10,    9,    9,    9, 0x08,
+      29,    9,    9,    9, 0x08,
+      48,    9,    9,    9, 0x08,
+      67,    9,    9,    9, 0x08,
+      86,    9,    9,    9, 0x08,
+     109,    9,    9,    9, 0x08,
+     132,    9,    9,    9, 0x08,
+     155,    9,    9,    9, 0x08,
+     178,    9,    9,    9, 0x08,
+     201,    9,    9,    9, 0x08,
+     224,    9,    9,    9, 0x08,
+     247,    9,    9,    9, 0x08,
+     270,    9,    9,    9, 0x08,
+     293,    9,    9,    9, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Favorite[] = {
-    "Favorite\0handleButton_6_1()\0\0"
+    "Favorite\0\0handleButton_6_1()\0"
     "handleButton_6_2()\0handleButton_6_3()\0"
     "handleButton_6_4()\0handleButton_6_pic_1()\0"
     "handleButton_6_pic_2()\0handleButton_6_pic_3()\0"

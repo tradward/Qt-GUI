@@ -1,8 +1,19 @@
-
 #ifndef CREATE_ACCOUNT_H
 #define CREATE_ACCOUNT_H
 
 #include <QDialog>
+#include <QtGui>
+#include <QApplication>
+#include <QFile>
+#include <QCloseEvent>
+
+#include "connector.h"
+#include "dialog.h"
+#include "mainwindow.h"
+#include "common.h"
+
+#include <vector>
+#include <iostream>
 
 class QAction;
 class QGroupBox;

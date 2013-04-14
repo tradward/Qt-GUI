@@ -23,6 +23,7 @@
 #include "account.h"
 #include "connector.h"
 #include "common.h"
+//#include "loading.h"
 
 using namespace std;
 
@@ -43,6 +44,8 @@ class MainWindow : public QDialog
     
 public:
     MainWindow();
+
+    void createImages();
     
     private slots:
     void handleButton_2();
@@ -70,7 +73,6 @@ private:
     void createMenu_2();
     void createHorizontalGroupBox_2();
 	void loadStyleSheet();
-	void createImages();
 	void closeEvent(QCloseEvent *event);
     //void main_window();
 	//void clickedSlot();

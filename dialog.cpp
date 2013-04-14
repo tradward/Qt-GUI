@@ -1,16 +1,17 @@
-
 #include <QtGui>
 #include <QApplication>
+#include <QString>
+
 #include "dialog.h"
 #include "create_account.h"
+#include "common.h"
+#include "connector.h"
+
+//#include <boost/functional/hash.hpp>
 #include <string>
-#include <QString>
 #include <vector>
 #include <iostream>
-#include "common.h"
-//#include <iostream>
-//#include <functional>
-#include "connector.h"
+
 using namespace std;
 
 Dialog::Dialog()
@@ -64,10 +65,11 @@ void Dialog::createFormGroupBox()
 	username = new QLineEdit;
 	indication = new QLabel(tr("Please input your information:"));
 	passwd->setEchoMode(QLineEdit::Password);
-    
+    QObject::connect(passwd, SIGNAL(returnPressed()),this, SLOT(search_dialog()));   
     layout->addRow(indication);
     layout->addRow(new QLabel(tr("Username: ")), username);
     layout->addRow(new QLabel(tr("Password: ")), passwd);
+
     
     formGroupBox->setLayout(layout);
 	
@@ -85,14 +87,8 @@ void Dialog::handleButton()
 {
 	QString str_2 = QString();
 	str_2 = passwd->text();
+    //boost::hash<string> str_2_string(str_2);
 	string str_2_string = string((const char *)str_2.toLocal8Bit());
-	//std::hash<string> str_hash;
-	//string hashed_password = str_hash(str_2_string);
-	//size_t hashed_password = str_hash(str_2_string);
-    
-	//stringstream ss;
-	//ss << hashed_password;
-	//string temp = ss.str();
     
 	QString str_2_2 = QString();
 	str_2_2 = username->text();
@@ -101,7 +97,7 @@ void Dialog::handleButton()
 	
     
 	//login*_*jianan*_*123456
-	cout << "Get Images" << endl;
+	cout << "Get Images0" << endl;
 	string url = Connector::ip.toStdString();
 	string inputCommand = "login*_*" + str_2_2_string +"*_*" +str_2_string;
     int clientfd= client::Clie_SockEstablish();
@@ -109,7 +105,7 @@ void Dialog::handleButton()
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
 	string response = client::Clie_GetResponse(clientfd);
     client::Clie_close(clientfd);
-    
+    cout<<"response = "<<response<<endl;
 	if(response == "Success"){
 		Connector::username = str_2_2;
 		Connector::password = str_2;
@@ -121,6 +117,38 @@ void Dialog::handleButton()
 	}
 }
 
+void Dialog::search_dialog()
+{
+	QString str_2 = QString();
+	str_2 = passwd->text();
+	string str_2_string = string((const char *)str_2.toLocal8Bit());
+    
+	QString str_2_2 = QString();
+	str_2_2 = username->text();
+	string str_2_2_string = string((const char *)str_2_2.toLocal8Bit());
+    
+	
+    
+	//login*_*jianan*_*123456
+	cout << "Get Images0" << endl;
+	string url = Connector::ip.toStdString();
+	string inputCommand = "login*_*" + str_2_2_string +"*_*" +str_2_string;
+    int clientfd= client::Clie_SockEstablish();
+    client::Clie_ClientConnect(clientfd, (char *)url.c_str());
+    client::Clie_SendCommand(clientfd, inputCommand.c_str());
+	string response = client::Clie_GetResponse(clientfd);
+    client::Clie_close(clientfd);
+    cout<<"response = "<<response<<endl;
+	if(response == "Success"){
+		Connector::username = str_2_2;
+		Connector::password = str_2;
+		accept();
+	}
+    
+	if(response == "Fail"){
+		indication->setText("Wrong information! Please input again!");
+	}
+}
 
 
 void Dialog::loadStyleSheet_2()

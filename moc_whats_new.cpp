@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'whats_new.h'
 **
-** Created: Fri Apr 12 16:01:41 2013
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
+** Created: Sun Apr 14 11:21:51 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'whats_new.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.4. It"
+#error "This file was generated using the moc from 4.8.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -31,28 +31,28 @@ static const uint qt_meta_data_WhatsNew[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       9,   28,   28,   28, 0x08,
-      29,   28,   28,   28, 0x08,
-      48,   28,   28,   28, 0x08,
-      67,   28,   28,   28, 0x08,
-      86,   28,   28,   28, 0x08,
-     106,   28,   28,   28, 0x08,
-     126,   28,   28,   28, 0x08,
-     146,   28,   28,   28, 0x08,
-     166,   28,   28,   28, 0x08,
-     186,   28,   28,   28, 0x08,
-     206,   28,   28,   28, 0x08,
-     226,   28,   28,   28, 0x08,
-     246,   28,   28,   28, 0x08,
-     266,   28,   28,   28, 0x08,
-     286,   28,   28,   28, 0x08,
-     306,   28,   28,   28, 0x08,
+      10,    9,    9,    9, 0x08,
+      29,    9,    9,    9, 0x08,
+      48,    9,    9,    9, 0x08,
+      67,    9,    9,    9, 0x08,
+      86,    9,    9,    9, 0x08,
+     106,    9,    9,    9, 0x08,
+     126,    9,    9,    9, 0x08,
+     146,    9,    9,    9, 0x08,
+     166,    9,    9,    9, 0x08,
+     186,    9,    9,    9, 0x08,
+     206,    9,    9,    9, 0x08,
+     226,    9,    9,    9, 0x08,
+     246,    9,    9,    9, 0x08,
+     266,    9,    9,    9, 0x08,
+     286,    9,    9,    9, 0x08,
+     306,    9,    9,    9, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_WhatsNew[] = {
-    "WhatsNew\0handleButton_7_1()\0\0"
+    "WhatsNew\0\0handleButton_7_1()\0"
     "handleButton_7_2()\0handleButton_7_3()\0"
     "handleButton_7_4()\0handle_a_button_7()\0"
     "handle_b_button_7()\0handle_c_button_7()\0"

@@ -3,6 +3,12 @@
 #define ENTRY_H
 
 #include <QDialog>
+#include <vector>
+#include <iostream>
+#include <assert.h>
+#include <string>
+
+using namespace std;
 
 class QAction;
 class QGroupBox;

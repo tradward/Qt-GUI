@@ -97,6 +97,7 @@ private:
 	QGroupBox *horizontal_images_6_1;
 	QGroupBox *horizontal_images_6_2;
 	QGroupBox *horizontal_images_6_3;
+    QVBoxLayout *mainLayout_6;
     
 	//bottom
 	QGroupBox *bottom_area_6;

@@ -28,7 +28,7 @@ Series::Series()
 	mainLayout_8->addWidget(line_logo_2_1);
 	mainLayout_8->addWidget(search_area);
 	mainLayout_8->addWidget(line_logo_2_2);
-	mainLayout_8->addWidget(history_label);
+	//mainLayout_8->addWidget(history_label);
 	mainLayout_8->addWidget(horizontalGroupBox_images_8);
 	mainLayout_8->addWidget(line_logo_2_8);
     
@@ -105,7 +105,7 @@ void Series::createBottom_8()
 	
 	//copyright
 	copy_right = new QLabel();
-	copy_right->setText("Copy right ...........:");
+	copy_right->setText(Connector::copyright);
     
 	sign_out_8 = new QPushButton(tr("<Sign Out>"));
 	manage_account_8 = new QPushButton(tr("<Manage Account>"));
@@ -217,10 +217,10 @@ void Series::display_options(){
 
 void Series::createImages_8(){
 	Connector::series_type = "series";
-	cout << "Get Images" << endl;
+	cout << "Get Images3" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series";
+	string inputCommand = "display*_*" + username_main +"*_*TV";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -313,7 +313,7 @@ void Series::handle_action_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Action&Advanture";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Action&Advanture";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -368,7 +368,7 @@ void Series::handle_biography_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*biography";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*biography";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -423,7 +423,7 @@ void Series::handle_classics_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*classics";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*classics";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -478,7 +478,7 @@ void Series::handle_comic_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*comic";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*comic";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -533,7 +533,7 @@ void Series::handle_comedy_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Comedy";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Comedy";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -587,7 +587,7 @@ void Series::handle_discovery_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Discovery";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Discovery";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -642,7 +642,7 @@ void Series::handle_documentary_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Documentary";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Documentary";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -697,7 +697,7 @@ void Series::handle_history_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*history";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*history";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -752,7 +752,7 @@ void Series::handle_kids_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*kids";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*kids";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -809,7 +809,7 @@ void Series::handle_miniseries_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*MiniSeries";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*MiniSeries";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -864,7 +864,7 @@ void Series::handle_reality_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Reality";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Reality";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -919,7 +919,7 @@ void Series::handle_science_fiction_button_8(){
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
 	string username_main = Connector::username.toStdString();
-	string inputCommand = "display*_*" + username_main +"*_*series*_*Science&Fiction";
+	string inputCommand = "display*_*" + username_main +"*_*TV*_*Science&Fiction";
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
@@ -1059,7 +1059,7 @@ void Series::handle_b_button_8()
 	}else if(Connector::series_type == "biography"){
 		Connector::e1 = Connector::series_biography_entry[1];
 	}else if(Connector::series_type == "classics"){
-		Connector::e1 = Connector::series_classics_entry[0];
+		Connector::e1 = Connector::series_classics_entry[1];
 	}else if(Connector::series_type == "comic"){
 		Connector::e1 = Connector::series_comic_entry[1];
 	}else if(Connector::series_type == "comedy"){
@@ -1100,7 +1100,7 @@ void Series::handle_c_button_8()
 	}else if(Connector::series_type == "biography"){
 		Connector::e1 = Connector::series_biography_entry[2];
 	}else if(Connector::series_type == "classics"){
-		Connector::e1 = Connector::series_classics_entry[0];
+		Connector::e1 = Connector::series_classics_entry[2];
 	}else if(Connector::series_type == "comic"){
 		Connector::e1 = Connector::series_comic_entry[2];
 	}else if(Connector::series_type == "comedy"){
@@ -1140,7 +1140,7 @@ void Series::handle_d_button_8()
 	}else if(Connector::series_type == "biography"){
 		Connector::e1 = Connector::series_biography_entry[3];
 	}else if(Connector::series_type == "classics"){
-		Connector::e1 = Connector::series_classics_entry[0];
+		Connector::e1 = Connector::series_classics_entry[3];
 	}else if(Connector::series_type == "comic"){
 		Connector::e1 = Connector::series_comic_entry[3];
 	}else if(Connector::series_type == "comedy"){
@@ -1181,7 +1181,7 @@ void Series::handle_e_button_8()
 	}else if(Connector::series_type == "biography"){
 		Connector::e1 = Connector::series_biography_entry[4];
 	}else if(Connector::series_type == "classics"){
-		Connector::e1 = Connector::series_classics_entry[0];
+		Connector::e1 = Connector::series_classics_entry[4];
 	}else if(Connector::series_type == "comic"){
 		Connector::e1 = Connector::series_comic_entry[4];
 	}else if(Connector::series_type == "comedy"){
@@ -1221,7 +1221,7 @@ void Series::handle_f_button_8()
 	}else if(Connector::series_type == "biography"){
 		Connector::e1 = Connector::series_biography_entry[5];
 	}else if(Connector::series_type == "classics"){
-		Connector::e1 = Connector::series_classics_entry[0];
+		Connector::e1 = Connector::series_classics_entry[5];
 	}else if(Connector::series_type == "comic"){
 		Connector::e1 = Connector::series_comic_entry[5];
 	}else if(Connector::series_type == "comedy"){

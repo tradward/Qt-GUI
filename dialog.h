@@ -1,4 +1,3 @@
-
 #ifndef DIALOG_H
 #define DIALOG_H
 
@@ -25,6 +24,7 @@ public:
     private slots:
     void handleButton();
     void handleButton_2();
+    void search_dialog();
 private:
     void createMenu();
     void createHorizontalGroupBox();

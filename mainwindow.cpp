@@ -1,24 +1,32 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow() {
+    /*hide();
+    Loading loading;
+    loading.exec();
+    //signout.setParent(this);
+    show();*/
     createMenu_2();
     createHorizontalGroupBox_2();
-	createImages();
-    
-    
-    QVBoxLayout *mainLayout_2 = new QVBoxLayout;
+    createImages();
+	QVBoxLayout *mainLayout_2 = new QVBoxLayout;
     mainLayout_2->setMenuBar(menuBar_2);
-    
+
     mainLayout_2->addWidget(horizontalGroupBox_2);
 	mainLayout_2->addWidget(line_label);
     //mainLayout_2->addWidget(formGroupBox_2);
 	//mainLayout_2->addWidget(line_label_3);
 	mainLayout_2->addWidget(horizontalGroupBox_images);
 	mainLayout_2->addWidget(horizontalGroupBox_images_2);
-    setLayout(mainLayout_2);
+    	setLayout(mainLayout_2);
 	loadStyleSheet();
 	//setWidgetResizable(true);
 	setWindowTitle(tr("Welcome!"));
+
+/*	loading.hide();
+    this->exec();
+    //signout.setParent(this);
+    this->show();*/
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
@@ -28,6 +36,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     signout.exec();
     //signout.setParent(this);
     show();
+    event->accept();
 }
 
 void MainWindow::createMenu_2() {
@@ -282,8 +291,9 @@ void MainWindow::handle_l_button_2() {
 }
 
 void MainWindow::createImages() {
-	cout << "Get Images" << endl;
+	cout << "Get Images1" << endl;
 	string url = Connector::ip.toStdString();
+	cout << url << endl;
 	string username_main = Connector::username.toStdString();
 	string inputCommand = "display*_*" + username_main +"*_*main";
     int clientfd= client::Clie_SockEstablish();

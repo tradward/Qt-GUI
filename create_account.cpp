@@ -1,15 +1,4 @@
-
-#include <QtGui>
-#include <QApplication>
-#include <QFile>
 #include "create_account.h"
-#include "connector.h"
-#include "dialog.h"
-#include "mainwindow.h"
-#include "common.h"
-#include <vector>
-#include <iostream>
-#include <QCloseEvent>
 
 CreateAccount::CreateAccount()
 {
@@ -31,6 +20,7 @@ void CreateAccount::closeEvent_a(QCloseEvent *event){
     Dialog dialog_a;
     dialog_a.exec();
     show();
+    event->accept();
 }
 
 void CreateAccount::createMenu_a()
@@ -72,7 +62,7 @@ void CreateAccount::createFormGroupBox_a()
 	username_input = new QLineEdit;
 	password_input = new QLineEdit;
 	//password_input_new = new QLineEdit;
-	//passwd->setEchoMode(QLineEdit::Password);
+	password_input->setEchoMode(QLineEdit::Password);
 	warning = new QLabel(tr("Password should be a mix of upper letters, lower letters, and digits."));
     layout_a->addRow(warning);
     layout_a->addRow(new QLabel(tr("Username: ")), username_input);

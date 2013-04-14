@@ -1,47 +1,47 @@
 
- #include <QtGui>
- #include <QApplication>//add it
- #include "movies.h"
- #include "favorite.h"
- #include "result.h"
- #include "connector.h"
- #include "sign_out.h"
- #include "account.h"
- #include "mainwindow.h"
- #include "common.h"
- #include "entry.h"
+#include <QtGui>
+#include <QApplication>//add it
+#include "movies.h"
+#include "favorite.h"
+#include "result.h"
+#include "connector.h"
+#include "sign_out.h"
+#include "account.h"
+#include "mainwindow.h"
+#include "common.h"
+#include "entry.h"
 #include <QCloseEvent>
-#include <vector>  
+#include <vector>
 
- Movies::Movies()
- {
-     	createMenu_3();
-     	createHorizontalGroupBox_3();
+Movies::Movies()
+{
+    createMenu_3();
+    createHorizontalGroupBox_3();
 	createBottom_3();
 	createImages_3();
 	display_options();
 	display_search();
 	create_labels();
-     	QVBoxLayout *mainLayout_3 = new QVBoxLayout;
-     	mainLayout_3->setMenuBar(menuBar_3);
-     	mainLayout_3->addWidget(movies_logo);
+    QVBoxLayout *mainLayout_3 = new QVBoxLayout;
+    mainLayout_3->setMenuBar(menuBar_3);
+    mainLayout_3->addWidget(movies_logo);
 	mainLayout_3->addWidget(line_logo_2_1);
 	mainLayout_3->addWidget(search_area);
 	mainLayout_3->addWidget(line_logo_2_2);
-	mainLayout_3->addWidget(history_label);
+	//mainLayout_3->addWidget(history_label);
 	mainLayout_3->addWidget(horizontalGroupBox_images_3);
 	mainLayout_3->addWidget(line_logo_2_3);
-
+    
 	mainLayout_3->addWidget(classification_label);
 	mainLayout_3->addWidget(options_1);
 	mainLayout_3->addWidget(options_2);
 	mainLayout_3->addWidget(options_3);
-	mainLayout_3->addWidget(line_logo_2_4);	
+	mainLayout_3->addWidget(line_logo_2_4);
 	mainLayout_3->addWidget(bottom_area);
-     	setLayout(mainLayout_3);
-     	setWindowTitle(tr("Welcome,user"));
+    setLayout(mainLayout_3);
+    setWindowTitle(tr("Welcome,user"));
 	loadStyleSheet_3();
- }
+}
 
 void Movies::closeEvent_3(QCloseEvent *event){
 	Connector::signout_p = 3;
@@ -54,72 +54,72 @@ void Movies::closeEvent_3(QCloseEvent *event){
 }
 
 
- void Movies:: create_labels(){
+void Movies:: create_labels(){
 	history_label = new QLabel();
 	history_label->setText("<img src=\"history.png\">");
-
+    
 	classification_label = new QLabel();
 	classification_label->setText("<img src=\"classification.png\">");
- }
+}
 
- void  Movies::createMenu_3()
- {
-     menuBar_3 = new QMenuBar;
+void  Movies::createMenu_3()
+{
+    menuBar_3 = new QMenuBar;
+    
+    fileMenu_3 = new QMenu(tr("&File"), this);
+    exitAction_3 = fileMenu_3->addAction(tr("E&xit"));
+    menuBar_3->addMenu(fileMenu_3);
+    
+    connect(exitAction_3, SIGNAL(triggered()), this, SLOT(accept()));
+}
 
-     fileMenu_3 = new QMenu(tr("&File"), this);
-     exitAction_3 = fileMenu_3->addAction(tr("E&xit"));
-     menuBar_3->addMenu(fileMenu_3);
-
-     connect(exitAction_3, SIGNAL(triggered()), this, SLOT(accept()));
- }
-
- void  Movies::createHorizontalGroupBox_3()
- {
+void  Movies::createHorizontalGroupBox_3()
+{
 	movies_logo = new QLabel();
 	movies_logo->setText("<img src=\"movies_logo.png\">");
 	movies_logo->setAlignment(Qt::AlignHCenter);
-
+    
 	line_logo_2_1 = new QLabel();
 	line_logo_2_1->setText("<img src=\"17.png\">");
-
+    
 	line_logo_2_2 = new QLabel();
 	line_logo_2_2->setText("<img src=\"17.png\">");
-
+    
 	line_logo_2_3 = new QLabel();
 	line_logo_2_3->setText("<img src=\"17.png\">");
-
+    
 	line_logo_2_4 = new QLabel();
 	line_logo_2_4->setText("<img src=\"17.png\">");
- }
+}
 
 
 
- void Movies::createBottom_3()
- {
+void Movies::createBottom_3()
+{
 	bottom_area = new QGroupBox();
 	QHBoxLayout *bottom_area_layout = new QHBoxLayout;
-
+    
 	//logo_3_2
 	logo_3_2 = new QLabel();
 	logo_3_2 ->setText("<img src=\"logo2.png\">");
 	
 	//copyright
 	copy_right = new QLabel();
-	copy_right->setText("Copy right ...........:");
-
+	copy_right->setText(Connector::copyright);
+    
 	sign_out_3 = new QPushButton(tr("<Sign Out>"));
 	manage_account_3 = new QPushButton(tr("<Manage Account>"));
 	sign_out_3->setFlat(true);
 	manage_account_3->setFlat(true);
 	QObject::connect(sign_out_3, SIGNAL(clicked()),this, SLOT(handleButton_3_3()));
 	QObject::connect(manage_account_3, SIGNAL(clicked()),this, SLOT(handleButton_3_4()));
-
+    
 	bottom_area_layout->addWidget(logo_3_2);
 	bottom_area_layout->addWidget(copy_right);
 	bottom_area_layout->addWidget(sign_out_3);
 	bottom_area_layout->addWidget(manage_account_3);
 	bottom_area->setLayout(bottom_area_layout);
- }
+}
 
 void Movies::display_search(){
 	search_area = new QGroupBox();
@@ -139,12 +139,12 @@ void Movies::display_search(){
 }
 
 void Movies::display_options(){
-
-
+    
+    
 	//1st line
 	options_1 = new QGroupBox();
 	QHBoxLayout *options_layout_1 = new QHBoxLayout;
-
+    
 	action =    	new QPushButton(tr("   =Action=         "));
 	action->setFlat(true);
 	animation = 	new QPushButton(tr("   =Animation=      "));
@@ -155,13 +155,13 @@ void Movies::display_options(){
 	documentary->setFlat(true);
 	drama = 	new QPushButton(tr("   =Drama=          "));
 	drama->setFlat(true);
-
+    
 	options_layout_1->addWidget(action);
 	options_layout_1->addWidget(animation);
 	options_layout_1->addWidget(comedy);
 	options_layout_1->addWidget(documentary);
 	options_layout_1->addWidget(drama);
-        options_1->setLayout(options_layout_1);
+    options_1->setLayout(options_layout_1);
 	//2nd line
 	options_2 = new QGroupBox();
 	QHBoxLayout *options_layout_2 = new QHBoxLayout;
@@ -175,7 +175,7 @@ void Movies::display_options(){
 	music_art->setFlat(true);
 	mystery_suspense=new QPushButton(tr("   =Mystery=        "));
 	mystery_suspense->setFlat(true);
-
+    
 	options_layout_2->addWidget(family_kids);
 	options_layout_2->addWidget(foreign);
 	options_layout_2->addWidget(horror);
@@ -201,26 +201,26 @@ void Movies::display_options(){
 	QObject::connect(comedy, SIGNAL(clicked()),this, SLOT(handle_comedy_button_3()));
 	QObject::connect(documentary, SIGNAL(clicked()),this, SLOT(handle_documentary_button_3()));
 	QObject::connect(drama, SIGNAL(clicked()),this, SLOT(handle_drama_button_3()));
-
+    
 	QObject::connect(family_kids, SIGNAL(clicked()),this, SLOT(handle_family_kids_button_3()));
 	QObject::connect(foreign, SIGNAL(clicked()),this, SLOT(handle_foreign_button_3()));
 	QObject::connect(horror, SIGNAL(clicked()),this, SLOT(handle_horror_button_3()));
 	QObject::connect(music_art, SIGNAL(clicked()),this, SLOT(handle_music_art_button_3()));
 	QObject::connect(mystery_suspense, SIGNAL(clicked()),this, SLOT(handle_mystery_suspense_button_3()));
-
+    
 	QObject::connect(romance, SIGNAL(clicked()),this, SLOT(handle_romance_button_3()));
 	QObject::connect(science_fiction, SIGNAL(clicked()),this, SLOT(handle_science_fiction_button_3()));
 	QObject::connect(sports, SIGNAL(clicked()),this, SLOT(handle_sports_button_3()));
 	QObject::connect(war, SIGNAL(clicked()),this, SLOT(handle_war_button_3()));
 	QObject::connect(western, SIGNAL(clicked()),this, SLOT(handle_western_button_3()));
-
-
+    
+    
 	options_layout_3->addWidget(romance);
 	options_layout_3->addWidget(science_fiction);
 	options_layout_3->addWidget(sports);
 	options_layout_3->addWidget(war);
 	options_layout_3->addWidget(western);
-        options_3->setLayout(options_layout_3);
+    options_3->setLayout(options_layout_3);
 }
 
 
@@ -233,7 +233,7 @@ void Movies::createImages_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -249,10 +249,10 @@ void Movies::createImages_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
-
-
+    
+    
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
     //QString a_button_str = QString(QString::fromLocal8Bit(Connector::main_entry[0][1].c_str()));
 	a_button_3 = new QPushButton();
@@ -294,33 +294,33 @@ void Movies::createImages_3(){
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setIconSize(QSize(120,200));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
-
-
+    
+    
+    
 	QObject::connect(a_button_3, SIGNAL(clicked()),this, SLOT(handle_a_button_3()));
 	QObject::connect(b_button_3, SIGNAL(clicked()),this, SLOT(handle_b_button_3()));
 	QObject::connect(c_button_3, SIGNAL(clicked()),this, SLOT(handle_c_button_3()));
 	QObject::connect(d_button_3, SIGNAL(clicked()),this, SLOT(handle_d_button_3()));
 	QObject::connect(e_button_3, SIGNAL(clicked()),this, SLOT(handle_e_button_3()));
 	QObject::connect(f_button_3, SIGNAL(clicked()),this, SLOT(handle_f_button_3()));
-
-
+    
+    
 	a_button_3->setFlat(true);
 	b_button_3->setFlat(true);
 	c_button_3->setFlat(true);
 	d_button_3->setFlat(true);
 	e_button_3->setFlat(true);
 	f_button_3->setFlat(true);
-
-     	horizontalGroupBox_images_3 = new QGroupBox();
-     	QHBoxLayout *layout_images_3 = new QHBoxLayout;
+    
+    horizontalGroupBox_images_3 = new QGroupBox();
+    QHBoxLayout *layout_images_3 = new QHBoxLayout;
 	layout_images_3->addWidget(a_button_3);
 	layout_images_3->addWidget(b_button_3);
 	layout_images_3->addWidget(c_button_3);
 	layout_images_3->addWidget(d_button_3);
 	layout_images_3->addWidget(e_button_3);
 	layout_images_3->addWidget(f_button_3);
-     	horizontalGroupBox_images_3->setLayout(layout_images_3);
+    horizontalGroupBox_images_3->setLayout(layout_images_3);
 	horizontalGroupBox_images_3->setFixedHeight(220);
 }
 
@@ -334,7 +334,7 @@ void Movies::handle_action_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -350,29 +350,29 @@ void Movies::handle_action_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
@@ -387,7 +387,7 @@ void Movies::handle_animation_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, (char *)inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -403,33 +403,33 @@ void Movies::handle_animation_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
 
 
@@ -442,7 +442,7 @@ void Movies::handle_comedy_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -458,29 +458,29 @@ void Movies::handle_comedy_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
@@ -488,7 +488,7 @@ void Movies::handle_comedy_button_3(){
 
 
 void Movies::handle_documentary_button_3(){
-
+    
 	Connector::movies_type = "documentary";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -497,7 +497,7 @@ void Movies::handle_documentary_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -513,34 +513,34 @@ void Movies::handle_documentary_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
-
+    
+    
 }
 void Movies::handle_drama_button_3(){
 	Connector::movies_type = "drama";
@@ -551,7 +551,7 @@ void Movies::handle_drama_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -567,34 +567,34 @@ void Movies::handle_drama_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
 }
-	
+
 void Movies::handle_family_kids_button_3(){
 	Connector::movies_type = "family";
 	cout << "Get Images" << endl;
@@ -604,7 +604,7 @@ void Movies::handle_family_kids_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -620,29 +620,29 @@ void Movies::handle_family_kids_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
@@ -657,7 +657,7 @@ void Movies::handle_foreign_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -673,29 +673,29 @@ void Movies::handle_foreign_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
@@ -710,7 +710,7 @@ void Movies::handle_horror_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -726,35 +726,35 @@ void Movies::handle_horror_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
-	
+
 void Movies::handle_music_art_button_3(){
 	Connector::movies_type = "art";
 	cout << "Get Images" << endl;
@@ -764,7 +764,7 @@ void Movies::handle_music_art_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -780,36 +780,36 @@ void Movies::handle_music_art_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
 }
 
 void Movies::handle_mystery_suspense_button_3(){
-
+    
 	Connector::movies_type = "mystery_suspense";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -818,7 +818,7 @@ void Movies::handle_mystery_suspense_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -834,36 +834,36 @@ void Movies::handle_mystery_suspense_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
 void Movies::handle_romance_button_3(){
-
+    
 	Connector::movies_type = "romance";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -872,7 +872,7 @@ void Movies::handle_romance_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -881,43 +881,43 @@ void Movies::handle_romance_button_3(){
         string re = client::Clie_GetResponse(clientfdx);
         vector<string> s = client::split(re, "||||");
         assert(s.size() == 3);
-       entry.push_back(s);
+        entry.push_back(s);
         Connector::movies_romance_entry[i] = s[0];
         client::Clie_SaveContent(clientfdx, (char *)url.c_str(), s[2]);
         client::Clie_close(clientfdx);
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
 }
 
 void Movies::handle_science_fiction_button_3(){
-
+    
 	Connector::movies_type = "science_fiction";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -926,8 +926,8 @@ void Movies::handle_science_fiction_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
-     vector<vector<string> > entry;
+    
+    vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
         int clientfdx = client::Clie_SockEstablish();;
@@ -942,37 +942,37 @@ void Movies::handle_science_fiction_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
 
 void Movies::handle_sports_button_3(){
-
+    
 	Connector::movies_type = "sports";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -981,8 +981,8 @@ void Movies::handle_sports_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
-     vector<vector<string> > entry;
+    
+    vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
         int clientfdx = client::Clie_SockEstablish();;
@@ -997,36 +997,36 @@ void Movies::handle_sports_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
 }
 
 void Movies::handle_war_button_3(){
-
+    
 	Connector::movies_type = "war";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -1035,7 +1035,7 @@ void Movies::handle_war_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
+    
     vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
@@ -1051,37 +1051,37 @@ void Movies::handle_war_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
 
 void Movies::handle_western_button_3(){
-
+    
 	Connector::movies_type = "western";
 	cout << "Get Images" << endl;
 	string url = Connector::ip.toStdString();
@@ -1090,8 +1090,8 @@ void Movies::handle_western_button_3(){
     int clientfd= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd, (char *)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
-
-     vector<vector<string> > entry;
+    
+    vector<vector<string> > entry;
     for(int i=0; i<6;i++){
         cout << i << endl;
         int clientfdx = client::Clie_SockEstablish();;
@@ -1106,40 +1106,40 @@ void Movies::handle_western_button_3(){
     }
     client::Clie_close(clientfd);
     assert(entry.size() == 6);
-
-
+    
+    
     const char * a_button_3_str = entry[0][1].c_str();
 	a_button_3->setIcon(QIcon(entry[0][2].c_str()));
 	a_button_3->setToolTip(tr(a_button_3_str));
- 
-     const char * b_button_3_str = entry[1][1].c_str();
+    
+    const char * b_button_3_str = entry[1][1].c_str();
 	b_button_3->setIcon(QIcon(entry[1][2].c_str()));
 	b_button_3->setToolTip(tr(b_button_3_str));
-
+    
     const char * c_button_3_str = entry[2][1].c_str();
 	c_button_3->setIcon(QIcon(entry[2][2].c_str()));
-	c_button_3->setToolTip(tr(c_button_3_str));  
-
+	c_button_3->setToolTip(tr(c_button_3_str));
+    
     const char * d_button_3_str = entry[3][1].c_str();
 	d_button_3->setIcon(QIcon(entry[3][2].c_str()));
 	d_button_3->setToolTip(tr(d_button_3_str));
-
-
+    
+    
     const char * e_button_3_str = entry[4][1].c_str();
 	e_button_3->setIcon(QIcon(entry[4][2].c_str()));
 	e_button_3->setToolTip(tr(e_button_3_str));
-
+    
     const char * f_button_3_str = entry[5][1].c_str();
 	f_button_3->setIcon(QIcon(entry[5][2].c_str()));
 	f_button_3->setToolTip(tr(f_button_3_str));
-
+    
 }
 
 
 void  Movies::handleButton_3_1()
 {
-		Connector::search_p = 3;
-		Connector::search_metric = search_field_3->text();
+    Connector::search_p = 3;
+    Connector::search_metric = search_field_3->text();
     hide();
     Result result_3;
     result_3.exec();
@@ -1177,7 +1177,7 @@ void  Movies::handleButton_3_4()
 void Movies::handle_a_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[0];
 	}else if(Connector::movies_type == "action"){
@@ -1211,7 +1211,7 @@ void Movies::handle_a_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[0];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();
@@ -1223,7 +1223,7 @@ void Movies::handle_a_button_3()
 void Movies::handle_b_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[1];
 	}else if(Connector::movies_type == "action"){
@@ -1257,7 +1257,7 @@ void Movies::handle_b_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[1];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();
@@ -1270,7 +1270,7 @@ void Movies::handle_b_button_3()
 void Movies::handle_c_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[2];
 	}else if(Connector::movies_type == "action"){
@@ -1304,7 +1304,7 @@ void Movies::handle_c_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[2];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();
@@ -1316,7 +1316,7 @@ void Movies::handle_c_button_3()
 void Movies::handle_d_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[3];
 	}else if(Connector::movies_type == "action"){
@@ -1350,7 +1350,7 @@ void Movies::handle_d_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[3];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();
@@ -1363,7 +1363,7 @@ void Movies::handle_d_button_3()
 void Movies::handle_e_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[4];
 	}else if(Connector::movies_type == "action"){
@@ -1397,7 +1397,7 @@ void Movies::handle_e_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[4];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();
@@ -1409,7 +1409,7 @@ void Movies::handle_e_button_3()
 void Movies::handle_f_button_3()
 {
 	Connector::entry_p = 3;
-
+    
 	if(Connector::movies_type == "movies"){
 		Connector::e1 = Connector::movies_entry[5];
 	}else if(Connector::movies_type == "action"){
@@ -1443,7 +1443,7 @@ void Movies::handle_f_button_3()
 	}else if(Connector::movies_type == "western"){
 		Connector::e1 = Connector::movies_western_entry[5];
 	}
-
+    
     hide();
     Entry entry;
     entry.exec();

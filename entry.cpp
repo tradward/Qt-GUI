@@ -20,7 +20,7 @@ using namespace std;
 
 Entry::Entry()
 {
-	favorite = "0";
+	Connector::favorite = "0";
     createMenu_4();
 	create_inf();
 	create_comment();
@@ -92,18 +92,25 @@ void Entry::createMenu_4()
 
 void Entry::create_inf()
 {
+	cout << "Asking for:"<<Connector::e1<<endl;
  	string inputCommand = "display*_*" + Connector::e1 + "*_*MTDetails";
     int clientfd_str= client::Clie_SockEstablish();
  	string url = Connector::ip.toStdString();
 	client::Clie_ClientConnect(clientfd_str, (char *)url.c_str());
     client::Clie_SendCommand(clientfd_str, inputCommand.c_str());
-    struct MovieData* ptr = client::Clie_SaveStruct(clientfd_str);
+
+	string str = client::Clie_SaveStruct(clientfd_str);
+	cout << str << endl;
+    vector<string> arg = client::split(str, "^^^^^");
+    cout << arg.size() << endl;
+    assert(arg.size() == 8);
+    //struct MovieData* ptr = client::Clie_SaveStruct(clientfd_str);
     client::Clie_close(clientfd_str);
     //get picture
     int clientfd_pic= client::Clie_SockEstablish();
     client::Clie_ClientConnect(clientfd_pic, (char *)url.c_str());
     client::Clie_GetResponse(clientfd_pic);
-    client::Clie_SaveContent(clientfd_pic, (char *)url.c_str(), ptr->pic);
+    client::Clie_SaveContent(clientfd_pic, (char *)url.c_str(), arg[6]);
     client::Clie_close(clientfd_pic);
 	
     
@@ -113,15 +120,15 @@ void Entry::create_inf()
     QGridLayout *info_v_groupbox_layout = new QGridLayout;
     
 	name = new QLabel(tr("Film Name: "));
-	name_result = new QLabel(tr(ptr->name));
+	name_result = new QLabel(tr(arg[0].c_str()));
 	date = new QLabel(tr("Date: "));
-	date_result = new QLabel(tr(ptr->year));
+	date_result = new QLabel(tr(arg[1].c_str()));
 	director = new QLabel(tr("Director:"));
-	director_result = new QLabel(tr(ptr->director));
+	director_result = new QLabel(tr(arg[3].c_str()));
 	stars = new QLabel(tr("Starring(s):"));
-	stars_result = new QLabel(tr(ptr->cast));
+	stars_result = new QLabel(tr(arg[4].c_str()));
 	length = new QLabel(tr("Length:"));
-	length_result = new QLabel(tr(ptr->length)+" mins");
+	length_result = new QLabel(tr(arg[2].c_str())+" mins");
     
 	//Connector:: entry_id = ptr->number;
     
@@ -144,7 +151,7 @@ void Entry::create_inf()
     
     
     
-    QString pic_string = ptr->pic;
+    QString pic_string = QString(QString::fromLocal8Bit(arg[6].c_str()));
 	picture_button = new QPushButton();
 	picture_button->setIcon(QIcon(pic_string));
 	picture_button->setIconSize(QSize(120,200));
@@ -171,7 +178,8 @@ void Entry::create_inf()
 	//synosis
 	synosis_label = new QLabel(tr("Synosis:"));
 	synosis_content = new QLabel();
-	synosis_content->setText(tr(ptr->content));
+
+	synosis_content->setText(tr(arg[5].c_str()));
 	synosis_content->setWordWrap(true);
 	synosis_content->setAlignment(Qt::AlignLeft);
 	synosis_content->adjustSize();
@@ -213,7 +221,7 @@ void Entry::create_button(){
 void Entry::handleButton_4_1()
 {
 	//changemovie*_*username+number+comments+rate(1+5)+favorite?
-	favorite = "1";
+	Connector::favorite = "1";
 }
 
 
@@ -231,18 +239,21 @@ void Entry::handleButton_4_3()
     
 	QString comment = QString();
 	comment = comment_content->toPlainText();
-	string comment_string = string((const char *)comment.toLocal8Bit());
-    
+	//string comment_string = string((const char *)comment.toLocal8Bit());
+    string comment_string = comment.toStdString();  
+
 	QString rate = QString();
 	rate = rate_combo->currentText();
-	string rate_string = string((const char *)rate.toLocal8Bit());
-    
+	//string rate_string = string((const char *)rate.toLocal8Bit());
+    string rate_string = rate.toStdString();
+
 	cout << "Change movie" << endl;
-	char url[20] = "10.190.53.95";
+	string url = Connector::ip.toStdString();
+	string username_main = Connector::username.toStdString();
 	//string inputCommand = "changemovie*_*" + user_name_string +"*_*" +entry_string  +"*_*"+ comment_content  +"*_*"+ rate_string  +"*_*"+ favorite;
-	string inputCommand = "changemovie";
+	string inputCommand = "changemovie*_*" + username_main +"*_*"+ Connector::e1 + "*_*"+ comment_string +"*_*"+rate_string +"*_*"+ Connector::favorite;
     int clientfd= client::Clie_SockEstablish();
-    client::Clie_ClientConnect(clientfd, url);
+    client::Clie_ClientConnect(clientfd, (char*)url.c_str());
     client::Clie_SendCommand(clientfd, inputCommand.c_str());
 	string response;
 	//response = client::Clie_GetResponse_11(clientfd);
@@ -276,6 +287,11 @@ void Entry::handleButton_4_2()
         hide();
         Series series_4;
         series_4.exec();
+        show();
+	}else if(Connector::entry_p == 5){
+        hide();
+        Result result_4;
+        result_4.exec();
         show();
 	}
 }

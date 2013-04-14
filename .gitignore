@@ -18,8 +18,12 @@ profile
 info/*
 *.jpg
 */gif
+*.o
 
 *.pyc
 *.pyo
 *.egg-info
 __pycache__
+*.o
+
+*.o
